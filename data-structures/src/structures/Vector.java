@@ -27,15 +27,27 @@ public class Vector {
 
         increaseCapacity();
 
-        //0 1 2 3 4 5 6 7 
-        //B C D E F G * *
-        //B C D E E F G * (move)
-        //B C D K E F G * (assignment)
-
         for(int i = size; i > position; i--){
             vector[i] = vector[i-1];
         }
         vector[position] = element;
+    }
+
+    public void remove(int position){
+        if (!(position < size && position >= 0)) {
+            throw new IllegalArgumentException("element out of vector range");
+        }
+
+        //0 1 2 3 4 5 
+        //A B C D E *
+        //A C D E E *
+
+        for(int i = position; i < size-1; i++){
+            vector[i] = vector[i+1];
+        }
+
+        size--;
+
     }
 
     public Integer getAt(int position) {
@@ -66,5 +78,25 @@ public class Vector {
             vector = newVector;
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
+        for(int i = 0; i < size-1; i++){
+            sb.append(vector[i]);
+            sb.append(", ");
+        }
+
+        if(size > 0){
+            sb.append(vector[size-1]);
+            sb.append("]");
+        }
+
+        return sb.toString();
+    }
+
+    
 
 }

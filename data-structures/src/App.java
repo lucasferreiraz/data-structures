@@ -1,3 +1,4 @@
+import structures.List;
 import structures.Vector;
 
 public class App {
@@ -12,6 +13,20 @@ public class App {
         vector.add(50); //4
 
         System.out.println(vector);
+
+        List<String> list = new List<>(5);
+
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("d");
+        list.add("e");
+
+        list.add("f");
+
+        list.remove(1);
+
+        System.out.println(list);
 
     }
 }

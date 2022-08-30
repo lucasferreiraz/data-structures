@@ -1,16 +1,18 @@
 package structures;
 
-public class Vector {
-
-    private Integer vector[];
+@SuppressWarnings("unchecked")
+public class List<T> {
+    
+    private T vector[];
     private int size;
 
-    public Vector(int amount) {
-        this.vector = new Integer[amount];
+    public List(int amount) {
+
+        this.vector = (T[]) new Object[amount];
         this.size = 0;
     }
 
-    public void add(int element) {
+    public void add(T element) {
         increaseCapacity();
         if (size < vector.length) {
             vector[size] = element;
@@ -20,7 +22,7 @@ public class Vector {
         }
     }
 
-    public void add(int position, int element){
+    public void add(int position, T element){
         if (!(position < size && position >= 0)) {
             throw new IllegalArgumentException("element out of vector range");
         }
@@ -46,14 +48,14 @@ public class Vector {
 
     }
 
-    public Integer getAt(int position) {
+    public T getAt(int position) {
         if (position < size && position >= 0) {
             return vector[position];
         }
         throw new IllegalArgumentException("element out of vector range");
     }
 
-    public int search(Integer element){
+    public int search(T element){
         for(int i = 0; i < size; i++){
             if(vector[i].equals(element)) { return i; }
         }
@@ -67,7 +69,7 @@ public class Vector {
 
     public void increaseCapacity(){
         if(size == vector.length){
-            Integer newVector[] = new Integer[size + 1];
+            T newVector[] = (T[]) new Object[size + 1];
             for(int i = 0; i < vector.length; i++){
                 newVector[i] = vector[i];
             }
@@ -92,7 +94,4 @@ public class Vector {
 
         return sb.toString();
     }
-
-    
-
 }

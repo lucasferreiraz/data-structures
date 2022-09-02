@@ -42,6 +42,39 @@ public class List<T> {
 
     }
 
+    public List<T> removeDuplicates(){
+        List<T> newVector = new List<>(size);
+        newVector.add(vector[0]);
+
+        for(int i = 1, j = 0; i < size; i++, j++){
+            if(vector[j] != vector[i]){
+                newVector.add(vector[i]);
+            }
+        }
+
+        return newVector;
+    }
+
+    public void removeRedundancy(){
+        T newVector[] = (T[]) new Object[size];
+        newVector[0] = vector[0];
+        int redundants = 0;
+
+        for(int i = 1, j = 0; i < size; i++){
+            if(vector[i-1] != vector[i]){
+                j++;
+                newVector[j] = vector[i];
+            } else {
+                redundants = redundants + 1;
+            }
+        }
+
+        size = size - 2;
+        vector = newVector;
+    }
+
+
+
     public T getAt(int position) {
         validatePosition(position);
 

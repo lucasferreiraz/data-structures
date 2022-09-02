@@ -7,7 +7,6 @@ public class List<T> {
     private int size;
 
     public List(int amount) {
-
         this.vector = (T[]) new Object[amount];
         this.size = 0;
     }
@@ -23,10 +22,7 @@ public class List<T> {
     }
 
     public void add(int position, T element){
-        if (!(position < size && position >= 0)) {
-            throw new IllegalArgumentException("element out of vector range");
-        }
-
+        validatePosition(position);
         increaseCapacity();
 
         for(int i = size; i > position; i--){
@@ -36,9 +32,7 @@ public class List<T> {
     }
 
     public void remove(int position){
-        if (!(position < size && position >= 0)) {
-            throw new IllegalArgumentException("element out of vector range");
-        }
+        validatePosition(position);
 
         for(int i = position; i < size-1; i++){
             vector[i] = vector[i+1];
@@ -49,10 +43,9 @@ public class List<T> {
     }
 
     public T getAt(int position) {
-        if (position < size && position >= 0) {
-            return vector[position];
-        }
-        throw new IllegalArgumentException("element out of vector range");
+        validatePosition(position);
+
+        return vector[position];
     }
 
     public int search(T element){
@@ -67,6 +60,8 @@ public class List<T> {
         return size;
     }
 
+    //auxiliar methods
+    
     public void increaseCapacity(){
         if(size == vector.length){
             T newVector[] = (T[]) new Object[size + 1];
@@ -74,6 +69,12 @@ public class List<T> {
                 newVector[i] = vector[i];
             }
             vector = newVector;
+        }
+    }
+
+    public void validatePosition(int position){
+        if (!(position < size && position >= 0)) {
+            throw new IllegalArgumentException("element out of vector range");
         }
     }
 

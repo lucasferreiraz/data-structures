@@ -21,10 +21,24 @@ public class Stack<T> {
         }
     }
 
+    public T peek(){
+        if(isEmpty()){ return null; }
+        return vector[size - 1];
+    }
+
+    public T pop(){
+        if(isEmpty()){ return null; }
+        return vector[--size];
+    }
+
+    public boolean isEmpty(){
+        return size == 0;
+    }
+    
     public int getSize() {
         return size;
     }
-
+    //auxiliar methods
     public void increaseCapacity(){
         if(size == vector.length){
             T newVector[] = (T[]) new Object[size + 1];

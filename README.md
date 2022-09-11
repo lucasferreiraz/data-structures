@@ -1,7 +1,7 @@
 # Estrutura de Dados (Java)
 
 
-Disponibilizarei aqui algumas implementações feitas durante o estudo na disciplina de Estrutura de Dados tais como Listas, Pilhas e Filas e estruturas ligadas.
+Disponibilizarei aqui algumas implementações feitas durante o estudo na disciplina de Estrutura de Dados tais como Listas, Pilhas, Filas e estruturas ligadas.
 
 ## Referências Utilizadas:
 
